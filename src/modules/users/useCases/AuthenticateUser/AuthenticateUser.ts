@@ -1,21 +1,18 @@
-import { User } from "../../domain/User";
+import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
-import { compare } from "bcryptjs";
 import { AuthenticateUserError } from "./AuthenticateUserError";
+import { AuthenticateUserDTO } from "../../dtos/AuthenticateUserDTO";
+import { AuthenticateUserMapper } from "../../mappers/AuthenticateUserMapper";
+import { AuthConfig } from "../../../../config/AuthConfig";
 
 type AuthenticateUserRequest = {
   email: string;
   password: string;
 };
 
-type AuthenticateUserResponse = {
-  user: Pick<
-    User,
-    "first_name" | "last_name" | "email" | "createdAt" | "updatedAt"
-  >;
-  token?: string;
-};
+type AuthenticateUserResponse = AuthenticateUserDTO;
 
 class AuthenticateUser {
   constructor(private readonly usersRepository: IUsersRepository) {}
@@ -35,13 +32,14 @@ class AuthenticateUser {
     if (!comparePassword) {
       throw new AuthenticateUserError.InvalidEmailOrPasswordError();
     }
+    const { secret, tokenExpiresIn } = AuthConfig;
 
-    // token
+    const token = sign({}, secret, {
+      expiresIn: tokenExpiresIn,
+      subject: userExists.id,
+    });
 
-    return {
-      user: userExists,
-      token: "",
-    };
+    return AuthenticateUserMapper.toDto(userExists, token);
   }
 }
 
