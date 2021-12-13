@@ -3,14 +3,14 @@ import { RegisterUserError } from "./RegisterUserError";
 
 import { hash } from "bcryptjs";
 
-type RegisterUserResponse = void;
-
 type RegisterUserRequest = {
   first_name: string;
   last_name: string;
   email: string;
   password: string;
 };
+
+type RegisterUserResponse = void;
 
 class RegisterUser {
   constructor(private readonly usersRepository: IUsersRepository) {}
