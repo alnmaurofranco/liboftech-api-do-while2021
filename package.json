@@ -4,7 +4,7 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "dev:server": "tsnd --respawn --transpile-only --exit-child --clear src/infra/http/server.ts",
+    "dev:server": "tsnd --respawn --transpile-only --clear --exit-child src/infra/http/server.ts",
     "db:migrations": "tsnd ./node_modules/.bin/prisma migrate dev --name",
     "db:migrate": "tsnd ./node_modules/.bin/prisma db push"
   },

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { sessionsRouter } from "./sessions.routes";
 
 const router = Router();
 
@@ -11,5 +12,7 @@ router.get("/", (request, response) => {
     age: new Date("2021").getFullYear() - 1998,
   });
 });
+
+router.use(sessionsRouter);
 
 export { router };
