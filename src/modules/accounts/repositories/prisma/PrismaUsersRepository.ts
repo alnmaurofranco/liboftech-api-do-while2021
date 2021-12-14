@@ -11,6 +11,9 @@ class PrismaUsersRepository implements IUsersRepository {
       where: {
         id,
       },
+      include: {
+        profile: true,
+      },
     });
 
     if (!user) return null;
