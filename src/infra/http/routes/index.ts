@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { accountsRouter } from "./accounts.routes";
 import { sessionsRouter } from "./sessions.routes";
 
 const router = Router();
@@ -14,5 +15,6 @@ router.get("/", (request, response) => {
 });
 
 router.use(sessionsRouter);
+router.use("/accounts", accountsRouter);
 
 export { router };

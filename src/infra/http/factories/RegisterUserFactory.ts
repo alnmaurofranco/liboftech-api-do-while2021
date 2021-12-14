@@ -1,6 +1,6 @@
-import { PrismaUsersRepository } from "../../../modules/users/repositories/prisma/PrismaUsersRepository";
-import { RegisterUser } from "../../../modules/users/useCases/RegisterUser/RegisterUser";
-import { RegisterUserController } from "../../../modules/users/useCases/RegisterUser/RegisterUserController";
+import { PrismaUsersRepository } from "../../../modules/accounts/repositories/prisma/PrismaUsersRepository";
+import { RegisterUser } from "../../../modules/accounts/useCases/RegisterUser/RegisterUser";
+import { RegisterUserController } from "../../../modules/accounts/useCases/RegisterUser/RegisterUserController";
 
 const RegisterUserFactory = (): RegisterUserController => {
   const usersRepository = new PrismaUsersRepository();

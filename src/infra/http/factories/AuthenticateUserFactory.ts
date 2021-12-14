@@ -1,6 +1,6 @@
-import { PrismaUsersRepository } from "../../../modules/users/repositories/prisma/PrismaUsersRepository";
-import { AuthenticateUser } from "../../../modules/users/useCases/AuthenticateUser/AuthenticateUser";
-import { AuthenticateUserController } from "../../../modules/users/useCases/AuthenticateUser/AuthenticateUserController";
+import { PrismaUsersRepository } from "../../../modules/accounts/repositories/prisma/PrismaUsersRepository";
+import { AuthenticateUser } from "../../../modules/accounts/useCases/AuthenticateUser/AuthenticateUser";
+import { AuthenticateUserController } from "../../../modules/accounts/useCases/AuthenticateUser/AuthenticateUserController";
 
 const AuthenticateUserFactory = (): AuthenticateUserController => {
   const usersRepository = new PrismaUsersRepository();
