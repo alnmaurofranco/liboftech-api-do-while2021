@@ -13,6 +13,11 @@ class PrismaUsersRepository implements IUsersRepository {
       },
       include: {
         profile: true,
+        // books_favorites: {
+        //   include: {
+        //     book: true,
+        //   },
+        // },
       },
     });
 

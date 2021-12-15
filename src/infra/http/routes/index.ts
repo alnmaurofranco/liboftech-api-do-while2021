@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { accountsRouter } from "./accounts.routes";
+import { booksRouter } from "./books.routes";
 import { sessionsRouter } from "./sessions.routes";
 
 const router = Router();
@@ -16,5 +17,6 @@ router.get("/", (request, response) => {
 
 router.use(sessionsRouter);
 router.use("/accounts", accountsRouter);
+router.use("/books", booksRouter);
 
 export { router };

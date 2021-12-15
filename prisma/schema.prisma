@@ -11,15 +11,16 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  first_name String
-  last_name  String
-  email      String   @unique
-  password   String
-  profile    Profile?
+  id              String         @id @default(uuid())
+  first_name      String
+  last_name       String
+  email           String         @unique
+  password        String
+  profile         Profile?
+  books_favorites BooksOnUsers[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   @@map("users")
 }
 
@@ -46,14 +47,24 @@ model Technology {
 }
 
 model Book {
-  id          String   @id @default(uuid())
-  name        String
+  id          String         @id @default(uuid())
+  name        String         @unique
   description String
   author      String
   isbn        Int
-  view        Int      @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  view        Int            @default(0)
+  users       BooksOnUsers[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
 
   @@map("books")
+}
+
+model BooksOnUsers {
+  user_id String
+  book_id String
+  user    User   @relation(fields: [user_id], references: [id])
+  book    Book   @relation(fields: [book_id], references: [id])
+
+  @@id([user_id, book_id])
 }
