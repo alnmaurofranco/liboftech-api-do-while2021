@@ -5,7 +5,11 @@ import { IBooksRepository } from "../IBooksRepository";
 
 class PrismaBooksRepository implements IBooksRepository {
   private repository = prisma.book;
-  private prisma = prisma;
+  //private prisma = prisma;
+
+  async findAll(): Promise<Book[]> {
+    return this.repository.findMany();
+  }
 
   async findById(id: string): Promise<Book> {
     const book = await this.repository.findUnique({
