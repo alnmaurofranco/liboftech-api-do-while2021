@@ -5,6 +5,7 @@ import { IBooksRepository } from "../IBooksRepository";
 
 class PrismaBooksRepository implements IBooksRepository {
   private repository = prisma.book;
+  private prisma = prisma;
 
   async findById(id: string): Promise<Book> {
     const book = await this.repository.findUnique({
@@ -18,9 +19,19 @@ class PrismaBooksRepository implements IBooksRepository {
   }
 
   async findByName(name: string): Promise<Book> {
-    const book = await this.repository.findUnique({
+    // const [{ id, name, description, author, isbn }] = (await this.prisma
+    //   .$queryRaw<Book>`SELECT * FROM books WHERE LOWER(name)=LOWER(${names})`) as any;
+
+    // const book = { id, name, description, author, isbn };
+    // if (!book) return null;
+
+    // return book;
+
+    const book = await this.repository.findFirst({
       where: {
-        name,
+        name: {
+          contains: name,
+        },
       },
     });
 
