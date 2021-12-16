@@ -66,6 +66,19 @@ class PrismaBooksRepository implements IBooksRepository {
 
     await this.repository.create({ data });
   }
+
+  async save(book: Book): Promise<Book> {
+    const data = book;
+
+    const bookUpdated = await this.repository.update({
+      where: {
+        id: book.id,
+      },
+      data,
+    });
+
+    return bookUpdated;
+  }
 }
 
 export { PrismaBooksRepository };

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { CreateBookFactory } from "../factories/books/CreateBookFactory";
+import { GetBookViewFactory } from "../factories/books/GetBookViewFactory";
 import { ListAllBookFactory } from "../factories/books/ListAllBookFactory";
 import { ListTop5BookFactory } from "../factories/books/ListTop5BooksFactory";
 import { EnsureAuthenticatedMiddleware } from "../middlewares/EnsureAuthenticatedMiddleware";
@@ -12,6 +13,10 @@ booksRouter.get("/", (request, response) =>
 
 booksRouter.get("/views", (request, response) =>
   ListTop5BookFactory().handle(request, response)
+);
+
+booksRouter.get("/:id", (request, response) =>
+  GetBookViewFactory().handle(request, response)
 );
 
 booksRouter.use(EnsureAuthenticatedMiddleware);

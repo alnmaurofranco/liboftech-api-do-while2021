@@ -7,6 +7,7 @@ interface IBooksRepository {
   findById(id: string): Promise<Book>;
   findByName(name: string): Promise<Book>;
   create(dto: CreateBookDTO): Promise<void>;
+  save(book: Book): Promise<Book>;
 }
 
 export { IBooksRepository };
