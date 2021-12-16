@@ -3,6 +3,7 @@ import { CreateBookFactory } from "../factories/books/CreateBookFactory";
 import { GetBookViewFactory } from "../factories/books/GetBookViewFactory";
 import { ListAllBookFactory } from "../factories/books/ListAllBookFactory";
 import { ListTop5BookFactory } from "../factories/books/ListTop5BooksFactory";
+import { UpdateBookFactory } from "../factories/books/UpdateBookFactory";
 import { EnsureAuthenticatedMiddleware } from "../middlewares/EnsureAuthenticatedMiddleware";
 
 const booksRouter = Router();
@@ -23,6 +24,10 @@ booksRouter.use(EnsureAuthenticatedMiddleware);
 
 booksRouter.post("/", (request, response) =>
   CreateBookFactory().handle(request, response)
+);
+
+booksRouter.put("/:id", (request, response) =>
+  UpdateBookFactory().handle(request, response)
 );
 
 export { booksRouter };
