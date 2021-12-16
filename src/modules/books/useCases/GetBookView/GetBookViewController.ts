@@ -1,5 +1,5 @@
-import { GetBookView } from "./GetBookView";
 import { Response, Request } from "express";
+import { GetBookView } from "./GetBookView";
 
 class GetBookViewController {
   constructor(private readonly getBookView: GetBookView) {}
