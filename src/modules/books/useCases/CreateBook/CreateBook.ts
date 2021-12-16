@@ -27,7 +27,7 @@ class CreateBook {
       throw new CreateBookError.InvalidAuthorError();
     }
 
-    if (!isbn && isbn.toString().trim().length <= 0) {
+    if (isbn.toFixed().trim().length < 8 || isbn.toFixed().trim().length > 9) {
       throw new CreateBookError.InvalidISBNError();
     }
 

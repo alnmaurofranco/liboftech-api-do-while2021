@@ -15,7 +15,7 @@ Listar todos os livros ✅
 Listar top-5 livros com mais visualização ✅
 Cadastrar livro ✅
 Visualizar livro ✅
-Editar livro
+Editar livro ✅
 Excluir livro
 
 
