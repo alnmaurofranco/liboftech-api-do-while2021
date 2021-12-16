@@ -8,7 +8,7 @@ class GetBookViewController {
     try {
       const { id } = request.params;
 
-      const result = await this.getBookView.execute({ id });
+      const result = await this.getBookView.execute({ book_id: id });
 
       return response.json(result);
     } catch (err) {

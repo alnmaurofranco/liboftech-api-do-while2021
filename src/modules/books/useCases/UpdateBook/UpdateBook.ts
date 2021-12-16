@@ -3,7 +3,7 @@ import { IBooksRepository } from "../../repositories/IBooksRepository";
 import { UpdateBookError } from "./UpdateBookError";
 
 type UpdateBookRequest = {
-  id: string;
+  book_id: string;
   name: string;
   description: string;
   author: string;
@@ -16,13 +16,13 @@ class UpdateBook {
   constructor(private readonly booksRepository: IBooksRepository) {}
 
   async execute({
-    id,
+    book_id,
     name,
     description,
     author,
     isbn,
   }: UpdateBookRequest): Promise<UpdateBookResponse> {
-    const bookExists = await this.booksRepository.findById(id);
+    const bookExists = await this.booksRepository.findById(book_id);
 
     if (!bookExists) {
       throw new UpdateBookError.BookNotFound();

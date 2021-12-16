@@ -1,4 +1,7 @@
 import { User } from "../../domain/User";
+import { UpdateProfileUserDTO } from "../../dtos/UpdateProfileUserDTO";
+import { GetProfileUserMapper } from "../../mappers/GetProfileUserMapper";
+import { UpdateProfileUserMapper } from "../../mappers/UpdateProfileUserMapper";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { UpdateProfileUserError } from "./UpdateProfileUserError";
 
@@ -12,7 +15,7 @@ type UpdateProfileUserRequest = {
   github?: string;
 };
 
-type UpdateProfileUserResponse = User;
+type UpdateProfileUserResponse = UpdateProfileUserDTO;
 
 class UpdateProfileUser {
   constructor(private readonly usersRepository: IUsersRepository) {}
@@ -61,7 +64,9 @@ class UpdateProfileUser {
     userExists.profile.linkedin = linkedin;
     userExists.profile.github = github;
 
-    return await this.usersRepository.save(userExists);
+    const userUpdated = await this.usersRepository.save(userExists);
+
+    return UpdateProfileUserMapper.toDto(userUpdated);
   }
 }
 

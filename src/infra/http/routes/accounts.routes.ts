@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { UpdateProfileUserFactory } from "../factories/accounts/UpdateProfileUserFactory";
-import { GetProfileUserFactory } from "../factories/GetProfileUserFactory";
+import { GetProfileUserFactory } from "../factories/accounts/GetProfileUserFactory";
 import { EnsureAuthenticatedMiddleware } from "../middlewares/EnsureAuthenticatedMiddleware";
 
 const accountsRouter = Router();

@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { AuthenticateUserFactory } from "../factories/AuthenticateUserFactory";
-import { RegisterUserFactory } from "../factories/RegisterUserFactory";
+import { AuthenticateUserFactory } from "../factories/accounts/AuthenticateUserFactory";
+import { RegisterUserFactory } from "../factories/accounts/RegisterUserFactory";
 
 const sessionsRouter = Router();
 

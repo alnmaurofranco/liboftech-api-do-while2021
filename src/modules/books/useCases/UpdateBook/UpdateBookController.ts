@@ -10,7 +10,7 @@ class UpdateBookController {
       const { name, description, author, isbn } = request.body;
 
       const result = await this.updateBook.execute({
-        id,
+        book_id: id,
         name,
         description,
         author,

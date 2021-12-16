@@ -3,7 +3,7 @@ import { IBooksRepository } from "../../repositories/IBooksRepository";
 import { GetBookViewError } from "./GetBookViewError";
 
 type GetBookViewRequest = {
-  id: string;
+  book_id: string;
 };
 
 type GetBookViewResponse = Book;
@@ -11,8 +11,8 @@ type GetBookViewResponse = Book;
 class GetBookView {
   constructor(private readonly booksRepository: IBooksRepository) {}
 
-  async execute({ id }: GetBookViewRequest): Promise<GetBookViewResponse> {
-    const bookExists = await this.booksRepository.findById(id);
+  async execute({ book_id }: GetBookViewRequest): Promise<GetBookViewResponse> {
+    const bookExists = await this.booksRepository.findById(book_id);
 
     if (!bookExists) {
       throw new GetBookViewError.BookNotFound();
