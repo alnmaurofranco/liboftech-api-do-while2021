@@ -8,6 +8,7 @@ interface IBooksRepository {
   findByName(name: string): Promise<Book>;
   create(dto: CreateBookDTO): Promise<void>;
   save(book: Book): Promise<Book>;
+  delete(book: Book): Promise<void>;
 }
 
 export { IBooksRepository };

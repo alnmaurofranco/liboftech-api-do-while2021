@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { CreateBookFactory } from "../factories/books/CreateBookFactory";
+import { DeleteBookFactory } from "../factories/books/DeleteBookFactory";
 import { GetBookViewFactory } from "../factories/books/GetBookViewFactory";
 import { ListAllBookFactory } from "../factories/books/ListAllBookFactory";
 import { ListTop5BookFactory } from "../factories/books/ListTop5BooksFactory";
@@ -28,6 +29,10 @@ booksRouter.post("/", (request, response) =>
 
 booksRouter.put("/:id", (request, response) =>
   UpdateBookFactory().handle(request, response)
+);
+
+booksRouter.delete("/:id", (request, response) =>
+  DeleteBookFactory().handle(request, response)
 );
 
 export { booksRouter };

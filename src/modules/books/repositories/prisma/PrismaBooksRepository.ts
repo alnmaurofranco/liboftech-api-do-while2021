@@ -79,6 +79,14 @@ class PrismaBooksRepository implements IBooksRepository {
 
     return bookUpdated;
   }
+
+  async delete(book: Book): Promise<void> {
+    await this.repository.delete({
+      where: {
+        id: book.id,
+      },
+    });
+  }
 }
 
 export { PrismaBooksRepository };
