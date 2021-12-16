@@ -4,6 +4,33 @@ import { CreateUserDTO } from "../../dtos/CreateUserDTO";
 import { IUsersRepository } from "../IUsersRepository";
 
 class PrismaUsersRepository implements IUsersRepository {
+  async save(user: User): Promise<User> {
+    const data = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      profile: {
+        update: {
+          bio: user.profile.bio,
+          linkedin: user.profile.linkedin,
+          github: user.profile.github,
+        },
+      },
+    };
+
+    const userUpdated = await this.repository.update({
+      where: {
+        id: user.id,
+      },
+      include: {
+        profile: true,
+      },
+      data,
+    });
+
+    return userUpdated;
+  }
+
   private repository = prisma.user;
 
   async findById(id: string): Promise<User> {
