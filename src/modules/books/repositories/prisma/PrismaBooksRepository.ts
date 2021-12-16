@@ -11,6 +11,14 @@ class PrismaBooksRepository implements IBooksRepository {
     return this.repository.findMany();
   }
 
+  async findBooksWithManyViews(): Promise<Book[]> {
+    return this.repository.findMany({
+      orderBy: {
+        view: "desc",
+      },
+    });
+  }
+
   async findById(id: string): Promise<Book> {
     const book = await this.repository.findUnique({
       where: {
