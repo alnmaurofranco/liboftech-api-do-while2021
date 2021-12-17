@@ -1,3 +1,4 @@
+import { BooksOnUsers } from "@prisma/client";
 import { prisma } from "../../../../infra/prisma";
 import { Book } from "../../domain/Book";
 import { CreateBookDTO } from "../../dtos/CreateBookDTO";
@@ -5,7 +6,7 @@ import { IBooksRepository } from "../IBooksRepository";
 
 class PrismaBooksRepository implements IBooksRepository {
   private repository = prisma.book;
-  //private prisma = prisma;
+  private booksOnUsersRepository = prisma.booksOnUsers;
 
   async findAll(): Promise<Book[]> {
     return this.repository.findMany();
@@ -86,6 +87,31 @@ class PrismaBooksRepository implements IBooksRepository {
         id: book.id,
       },
     });
+  }
+
+  async deleteByRelationBooksAndUsers({
+    book_id,
+    user_id,
+  }: BooksOnUsers): Promise<void> {
+    await this.booksOnUsersRepository.delete({
+      where: {
+        user_id_book_id: {
+          book_id,
+          user_id,
+        },
+      },
+    });
+
+    // booksAndUsersID.map(async (bookAndUser) => {
+    //   await this.booksOnUsersRepository.delete({
+    //     where: {
+    //       user_id_book_id: {
+    //         user_id: bookAndUser.user_id,
+    //         book_id: bookAndUser.book_id,
+    //       },
+    //     },
+    //   });
+    // });
   }
 }
 

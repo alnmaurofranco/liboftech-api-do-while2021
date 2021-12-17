@@ -9,6 +9,9 @@ type GetProfileUserDTO = {
     linkedin: string;
   };
   //technologys?: {};
+  books_favorites: {
+    name: string;
+  }[];
   createdAt: Date;
   updatedAt: Date;
 };

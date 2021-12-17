@@ -13,6 +13,11 @@ const GetProfileUserMapper = {
         github: raw.profile.github,
         linkedin: raw.profile.linkedin,
       },
+      books_favorites: raw.books_favorites.map((bookFav) => {
+        return {
+          name: bookFav.book.name,
+        };
+      }),
       createdAt: raw.createdAt,
       updatedAt: raw.updatedAt,
     };

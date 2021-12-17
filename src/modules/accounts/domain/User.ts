@@ -1,4 +1,5 @@
-import { Profile } from "@prisma/client";
+import { Profile, BooksOnUsers } from "@prisma/client";
+import { Book } from "../../books/domain/Book";
 
 class User {
   id?: string;
@@ -7,6 +8,9 @@ class User {
   email: string;
   password: string;
   profile?: Profile;
+  books_favorites?: (BooksOnUsers & {
+    book?: Book;
+  })[];
   createdAt?: Date;
   updatedAt?: Date;
 

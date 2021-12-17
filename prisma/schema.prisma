@@ -67,4 +67,5 @@ model BooksOnUsers {
   book    Book   @relation(fields: [book_id], references: [id])
 
   @@id([user_id, book_id])
+  @@map("books_users")
 }

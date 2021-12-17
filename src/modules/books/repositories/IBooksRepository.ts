@@ -1,3 +1,4 @@
+import { BooksOnUsers } from "@prisma/client";
 import { Book } from "../domain/Book";
 import { CreateBookDTO } from "../dtos/CreateBookDTO";
 
@@ -9,6 +10,7 @@ interface IBooksRepository {
   create(dto: CreateBookDTO): Promise<void>;
   save(book: Book): Promise<Book>;
   delete(book: Book): Promise<void>;
+  deleteByRelationBooksAndUsers(bookAndUserID: BooksOnUsers): Promise<void>;
 }
 
 export { IBooksRepository };

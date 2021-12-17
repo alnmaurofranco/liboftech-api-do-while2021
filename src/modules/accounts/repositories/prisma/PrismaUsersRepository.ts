@@ -13,11 +13,11 @@ class PrismaUsersRepository implements IUsersRepository {
       },
       include: {
         profile: true,
-        // books_favorites: {
-        //   include: {
-        //     book: true,
-        //   },
-        // },
+        books_favorites: {
+          include: {
+            book: true,
+          },
+        },
       },
     });
 
@@ -75,6 +75,16 @@ class PrismaUsersRepository implements IUsersRepository {
           github: user.profile.github,
         },
       },
+      books_favorites: {
+        createMany: {
+          data: user.books_favorites.map((findBook) => {
+            return {
+              book_id: findBook.book_id,
+            };
+          }),
+          skipDuplicates: true,
+        },
+      },
     };
 
     const userUpdated = await this.repository.update({
@@ -83,6 +93,11 @@ class PrismaUsersRepository implements IUsersRepository {
       },
       include: {
         profile: true,
+        books_favorites: {
+          include: {
+            book: true,
+          },
+        },
       },
       data,
     });
