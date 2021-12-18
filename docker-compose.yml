@@ -7,9 +7,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
-      - POSTGRESQL_DATABASE=heatdb
+      - POSTGRESQL_DATABASE=libdb
     volumes:
       - "pgdata:/bitnami/postgresql"
     networks:
