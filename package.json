@@ -1,5 +1,5 @@
 {
-  "name": "education-api",
+  "name": "liboftech-api-do-while2021",
   "version": "1.0.0",
   "main": "src/infra/http/server.ts",
   "license": "MIT",
