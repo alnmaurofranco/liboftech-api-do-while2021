@@ -20,8 +20,9 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 <img src="https://cdn.svgporn.com/logos/nodejs-icon.svg" alt="nodejs" width="30" height="30" style="margin-left: 5px;"/>
 <img src="https://cdn.svgporn.com/logos/express.svg" alt="express" width="30" height="30" style="margin-left: 5px;"/>
 <img src="https://cdn.svgporn.com/logos/typescript-icon.svg" alt="typescript" width="30" height="30" style="margin-left: 5px;"/>
+<img src="https://cdn.svgporn.com/logos/prisma.svg" alt="prisma" width="30" heigth="30" style="margin-right: 5px;" />
 <img src="https://cdn.svgporn.com/logos/postgresql.svg" alt="postgresql" width="30" height="30" style="margin-left: 5px;"/>
-<img alt="Docker" src="https://cdn.svgporn.com/logos/docker-icon.svg" width="30" heigth="30" style="margin-right: 5px;" />
+<img src="https://cdn.svgporn.com/logos/docker-icon.svg" alt="docker" width="30" heigth="30" style="margin-right: 5px;" />
 </p>
 
 ## ✨ Funcionalidades
