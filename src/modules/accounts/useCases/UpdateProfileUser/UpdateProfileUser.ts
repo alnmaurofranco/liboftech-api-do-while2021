@@ -61,10 +61,7 @@ class UpdateProfileUser {
         throw new UpdateProfileUserError.AlreadyExistsEmailError(email);
       }
     }
-    // sem mapeamento de livros e excluido
-    //await this.booksRepository.deleteByRelationBooksAndUsers(books);
 
-    // mapeando os livros e excluindo
     userExists.books_favorites.map(async (book) => {
       await this.booksRepository.deleteByRelationBooksAndUsers(book);
     });
