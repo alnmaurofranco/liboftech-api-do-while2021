@@ -34,7 +34,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Atualização de um livro pelo administrador ✅
 - Exclusão de livros pelo administrador ✅
 
-## 👨🏼‍💻 Rodando o projeto
+## 👨🏼‍💻 Como executar
 Para rodar este projeto é necessário ter [Node.js](https://nodejs.org/) instalado em sua maquina. Caso não tenha ainda basta acessar o site do [Node.js](https://nodejs.org/) e instalar para continuar.
 
 - Clone este repositório com comando
@@ -63,3 +63,4 @@ yarn dev:server
 E pronto agora API estára rodando e pode ser acessado em [`localhost:3333`](http://localhost:3333)
 
 ---
+Feito com 💚 by AlanM Franco
