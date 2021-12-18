@@ -8,7 +8,6 @@ type GetProfileUserDTO = {
     github: string;
     linkedin: string;
   };
-  //technologys?: {};
   books_favorites: {
     name: string;
   }[];

@@ -1,5 +1,5 @@
-import { BooksOnUsers } from "@prisma/client";
 import { prisma } from "../../../../infra/prisma";
+import { BooksOnUsers } from "@prisma/client";
 import { Book } from "../../domain/Book";
 import { CreateBookDTO } from "../../dtos/CreateBookDTO";
 import { IBooksRepository } from "../IBooksRepository";
@@ -32,14 +32,6 @@ class PrismaBooksRepository implements IBooksRepository {
   }
 
   async findByName(name: string): Promise<Book> {
-    // const [{ id, name, description, author, isbn }] = (await this.prisma
-    //   .$queryRaw<Book>`SELECT * FROM books WHERE LOWER(name)=LOWER(${names})`) as any;
-
-    // const book = { id, name, description, author, isbn };
-    // if (!book) return null;
-
-    // return book;
-
     const book = await this.repository.findFirst({
       where: {
         name: {
@@ -101,17 +93,6 @@ class PrismaBooksRepository implements IBooksRepository {
         },
       },
     });
-
-    // booksAndUsersID.map(async (bookAndUser) => {
-    //   await this.booksOnUsersRepository.delete({
-    //     where: {
-    //       user_id_book_id: {
-    //         user_id: bookAndUser.user_id,
-    //         book_id: bookAndUser.book_id,
-    //       },
-    //     },
-    //   });
-    // });
   }
 }
 

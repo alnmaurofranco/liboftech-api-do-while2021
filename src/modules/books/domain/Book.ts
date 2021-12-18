@@ -5,6 +5,8 @@ class Book {
   author: string;
   isbn: number;
   view?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 
   private constructor({ name, description, author, isbn }: Book) {
     const book = Object.assign(this, {

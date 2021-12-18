@@ -6,6 +6,7 @@ import { ListAllBookFactory } from "../factories/books/ListAllBookFactory";
 import { ListTop5BookFactory } from "../factories/books/ListTop5BooksFactory";
 import { UpdateBookFactory } from "../factories/books/UpdateBookFactory";
 import { EnsureAuthenticatedMiddleware } from "../middlewares/EnsureAuthenticatedMiddleware";
+import { EnsureIsAdministradorMiddleware } from "../middlewares/EnsureIsAdministradorMiddleware";
 
 const booksRouter = Router();
 
@@ -21,7 +22,7 @@ booksRouter.get("/:id", (request, response) =>
   GetBookViewFactory().handle(request, response)
 );
 
-booksRouter.use(EnsureAuthenticatedMiddleware);
+booksRouter.use(EnsureAuthenticatedMiddleware, EnsureIsAdministradorMiddleware);
 
 booksRouter.post("/", (request, response) =>
   CreateBookFactory().handle(request, response)

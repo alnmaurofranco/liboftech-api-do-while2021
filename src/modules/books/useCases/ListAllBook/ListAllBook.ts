@@ -1,7 +1,8 @@
+import { Book } from "../../domain/Book";
 import { IBooksRepository } from "../../repositories/IBooksRepository";
 import { ListAllBookError } from "./ListAllBookError";
 
-type ListAllBookResponse = {};
+type ListAllBookResponse = Book[];
 
 class ListAllBook {
   constructor(private readonly booksRepository: IBooksRepository) {}

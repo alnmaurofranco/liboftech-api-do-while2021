@@ -16,6 +16,7 @@ model User {
   last_name       String
   email           String         @unique
   password        String
+  isAdmin         Boolean        @default(false)
   profile         Profile?
   books_favorites BooksOnUsers[]
   createdAt       DateTime       @default(now())
@@ -25,25 +26,14 @@ model User {
 }
 
 model Profile {
-  id          String       @id @default(uuid())
-  user_id     String       @unique
-  user        User         @relation(fields: [user_id], references: [id])
-  bio         String?
-  github      String?
-  linkedin    String?
-  technologys Technology[]
+  id       String  @id @default(uuid())
+  user_id  String  @unique
+  user     User    @relation(fields: [user_id], references: [id])
+  bio      String?
+  github   String?
+  linkedin String?
 
   @@map("user_profile")
-}
-
-model Technology {
-  id         String   @id @default(uuid())
-  name       String
-  profile    Profile? @relation(fields: [profile_id], references: [id])
-  profile_id String?
-  createdAt  DateTime @default(now())
-
-  @@map("technologys")
 }
 
 model Book {

@@ -1,5 +1,5 @@
 const AuthConfig = {
-  secret: "165cd5c2-5c69-11ec-8b97-d3089b54c4ae",
+  secret: process.env.JWT_SECRET_KEY,
   tokenExpiresIn: "24h",
 };
 

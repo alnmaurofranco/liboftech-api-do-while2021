@@ -7,6 +7,7 @@ class User {
   last_name: string;
   email: string;
   password: string;
+  isAdmin: boolean;
   profile?: Profile;
   books_favorites?: (BooksOnUsers & {
     book?: Book;
